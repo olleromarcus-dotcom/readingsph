@@ -7,6 +7,7 @@ import { Button } from './ui/button';
 import { ChevronUp, User, Calendar, MapPin, GraduationCap, Briefcase, Shield, Crown, Award, Building, Heart, Globe, BarChart3, TrendingUp, DollarSign, Wrench } from 'lucide-react';
 import MagsaysayPrograms from './MagsaysayPrograms';
 import MagsaysayEvaluation from './MagsaysayEvaluation';
+import MagsaysayReferences from './MagsaysayReferences';
 
 const CompleteMagsaysayAssessment = () => {
   const scrollToSection = (sectionId) => {
