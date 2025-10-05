@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramon Magsaysay Presidential Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 50%, #fed7aa 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Ramon_Magsaysay_Official_Malaca%C3%B1an_Portrait.jpg/250px-Ramon_Magsaysay_Official_Malaca%C3%B1an_Portrait.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(252, 211, 77, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #d97706;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #92400e;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #a16207;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #92400e;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 251, 235, 0.8);
+            border: 1px solid #fcd34d;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Typography */
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 1rem;
+            font-family: serif;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #a16207;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #b45309;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+
+        .text-content {
+            color: #a16207;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .text-small {
+            color: #a16207;
+            font-size: 0.875rem;
+            line-height: 1.75;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 12rem;
+            height: 16rem;
+            margin: 0 auto 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            border: 4px solid #fcd34d;
+            filter: sepia(0.3);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #92400e;
+        }
+
+        .info-text {
+            color: #a16207;
+        }
+
+        /* Lists */
+        .custom-list {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .custom-list li {
+            position: relative;
+            color: #a16207;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .custom-list li::before {
+            content: '•';
+            color: #d97706;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Separator */
+        .separator {
+            height: 1px;
+            background: #fcd34d;
+            margin: 1.5rem 0;
+        }
+
+        /* Legacy Sections */
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .legacy-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .strengths-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+
+        .weaknesses-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+
+        .legacy-item {
+            margin-bottom: 1rem;
+        }
+
+        .legacy-item-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Evaluation Table */
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #a16207;
+            margin-bottom: 2rem;
+        }
+
+        .eval-table th,
+        .eval-table td {
+            border: 2px solid #a16207;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .eval-table th {
+            background: #fcd34d;
+            font-weight: bold;
+            color: #92400e;
+        }
+
+        .eval-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #92400e;
+        }
+
+        .eval-table .total-row {
+            background: #fed7aa;
+            font-weight: bold;
+            color: #92400e;
+        }
+
+        .eval-table .checkmark {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #92400e;
+        }
+
+        /* References */
+        .reference-item {
+            border-left: 4px solid #fbbf24;
+            padding-left: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .reference-text {
+            color: #a16207;
+            font-size: 0.875rem;
+            line-height: 1.75;
+        }
+
+        .reference-link {
+            color: #d97706;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .reference-link:hover {
+            color: #b45309;
+        }
+
+        /* Student Info */
+        .student-info {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #fcd34d;
+            text-align: center;
+        }
+
+        .student-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-names {
+            color: #a16207;
+            font-size: 1.125rem;
+        }
+
+        .student-class {
+            color: #b45309;
+            font-size: 1rem;
+        }
+
+        /* Recommendations */
+        .recommendation-item {
+            background: #fed7aa;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #fcd34d;
+            margin-bottom: 1rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: #d97706;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 40;
+        }
+
+        .back-to-top:hover {
+            background: #b45309;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        /* Icons (using Unicode symbols) */
+        .icon-user::before { content: '👤'; }
+        .icon-education::before { content: '🎓'; }
+        .icon-briefcase::before { content: '💼'; }
+        .icon-shield::before { content: '🛡️'; }
+        .icon-crown::before { content: '👑'; }
+        .icon-award::before { content: '🏆'; }
+        .icon-building::before { content: '🏢'; }
+        .icon-heart::before { content: '❤️'; }
+        .icon-dollar::before { content: '💰'; }
+        .icon-wrench::before { content: '🔧'; }
+        .icon-chart::before { content: '📊'; }
+        .icon-trend::before { content: '📈'; }
+        .icon-globe::before { content: '🌐'; }
+        .icon-calendar::before { content: '📅'; }
+        .icon-map::before { content: '📍'; }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <h1 class="nav-title">Ramon Magsaysay Assessment</h1>
+            <div class="nav-links">
+                <a class="nav-link" href="#background"><span class="icon-user"></span> Background</a>
+                <a class="nav-link" href="#education"><span class="icon-education"></span> Education</a>
+                <a class="nav-link" href="#early-career"><span class="icon-briefcase"></span> Early Career</a>
+                <a class="nav-link" href="#presidency"><span class="icon-crown"></span> Presidency</a>
+                <a class="nav-link" href="#legacy"><span class="icon-award"></span> Legacy</a>
+                <a class="nav-link" href="#programs"><span class="icon-building"></span> Programs</a>
+                <a class="nav-link" href="#evaluation"><span class="icon-chart"></span> Evaluation</a>
+                <a class="nav-link" href="#references"><span class="icon-globe"></span> References</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Ramon_Magsaysay_Official_Malaca%C3%B1an_Portrait.jpg/250px-Ramon_Magsaysay_Official_Malaca%C3%B1an_Portrait.jpg" 
+                     alt="Ramon Magsaysay Official Portrait" 
+                     class="hero-image">
+                <h1 class="hero-title">READINGS IN THE PHILIPPINE HISTORY</h1>
+                <h2 class="hero-subtitle">Assessment of Ramon Magsaysay's Presidency</h2>
+                <p class="hero-description">"Champion of the Masses" - 7th President of the Philippines</p>
+            </div>
+        </section>
+
+        <!-- Background Section -->
+        <section id="background" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-user"></span> BACKGROUND</h2>
+                        <p class="text-content">Ramon del Fierro Magsaysay "Champion of the Masses" - 7th president of the Philippines</p>
+                        
+                        <div class="grid-2">
+                            <div>
+                                <div class="info-item">
+                                    <span class="icon-calendar"></span>
+                                    <div>
+                                        <p class="info-label">Born:</p>
+                                        <p class="info-text">August 31, 1907 - Iba, Zambales</p>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <span class="icon-map"></span>
+                                    <div>
+                                        <p class="info-label">Died:</p>
+                                        <p class="info-text">March 17, 1957 (age 49) - Balamban, Cebu - Airplane Crash</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="margin-bottom: 1rem;">
+                                    <p class="info-label">Parents:</p>
+                                    <p class="info-text">Exequiel Magsaysay Delos Santos - a blacksmith</p>
+                                    <p class="info-text">Perfecta del Fierro Quimson - a school teacher</p>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <p class="info-label">Spouse:</p>
+                                    <p class="info-text">Luz Banzon</p>
+                                </div>
+                                <div>
+                                    <p class="info-label">Children:</p>
+                                    <p class="info-text">Teresita, Milagros, Ramon Jr.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Background -->
+        <section id="education" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-education"></span> EDUCATIONAL BACKGROUND</h2>
+                        <p class="text-content">He completed his elementary and secondary education in Zambales. During his higher education he studied at the University of The Philippines, in 1927, but later transferred to Jose Rizal College (now Jose Rizal University), from 1928-1932, where received a bachelor's degree in commerce with a major in mechanical engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Early Career -->
+        <section id="early-career" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-briefcase"></span> EARLY PROFESSION</h2>
+                        <p class="text-content">To support himself he worked as a chauffeur during his studies in engineering. Before entering politics, he worked as an automobile mechanic then later on a general manager for a transportation company</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-shield"></span> WORLD WAR II</h2>
+                        <p class="text-content">He joined the Philippine army during World War II, where he served as a guerilla leader in Zambales, he then got appointed as a military governor in said province</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title">EARLY POLITICAL EXPERIENCE</h2>
+                        <p class="text-content">After the war, he was elected as a congressman representing Zambales in 1946. His reputation grew, leading to President Elpidio Quirino to appoint him as Secretary of National Defense in 1950. During which he became known for "one of the most successful antiguerilla campaign in modern history" against the Hukbalahap Rebellion</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Presidency -->
+        <section id="presidency" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-crown"></span> PRESIDENCY</h2>
+                        <p class="text-content">During the 1953 election he ran for presidency under the Nacionalista Party where he won against Quirino, during this he also popularized the use of "campaign jingles". During his term, he then became known as the "champion of the masses" for his down-to-earth leadership and policies favoring the welfare of common people. He also opened the doors of Malacañang Palace making it accessible to the public.</p>
+                        <div class="separator"></div>
+                        <p class="text-content" style="font-style: italic;">Tragically, he died on March 17, 1957 on the presidential plane which crashed on Mount Manunggal in Cebu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy -->
+        <section id="legacy" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-award"></span> LEGACY</h2>
+                        <p class="text-content">Ramon Magsaysay's long-lasting impact on particular events continues to be relevant today. But what are the strengths and weaknesses of Ramon Magsaysay's term?</p>
+                        
+                        <div class="legacy-grid">
+                            <div>
+                                <h3 class="strengths-title">STRENGTHS IN MAGSAYSAY'S LEGACY</h3>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Agrarian reform & protection of tenant rights</h4>
+                                    <p class="text-small">His Enactments involved establishing fairness in tenancy relationships, secure tenure, and equitable produce sharing. Established land and agrarian reform programs which provided secure tenure and reduced uncertainty for farmers</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Effective suppression of the Hukbalahap insurgency</h4>
+                                    <p class="text-small">Reorganized the military by removing corrupt/incompetent officers. Emphasized mobility and flexibility to regain government territory and reduce Huk insurgency. Moreover, American aid and advisors were used in military efforts.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Infrastructure & Rural Development</h4>
+                                    <p class="text-small">As a response to poverty, roads, schools, health clinics, irrigation, and wells are being provided in neglected rural areas.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Anti-corruption and pro-people governance</h4>
+                                    <p class="text-small">Gained an incorruptibility reputation because he dismissed corrupt officials and made the government more responsive to common people.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Foreign relations & reliance on international support</h4>
+                                    <p class="text-small">Retained close ties with the US that paved the way of military and economic aid.</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="weaknesses-title">WEAKNESSES IN MAGSAYSAY'S LEGACY</h3>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Imperfect implementation of reform</h4>
+                                    <p class="text-small">Tenant farmers remained vulnerable, while powerful landowners remained resistant. The reform still allowed landowners to keep large estates, so only very large haciendas were affected.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Dependence on US aid and influence</h4>
+                                    <p class="text-small">A degree of foreign dependency was established in the consistent receipt of US aid in economics and military, which constrained domestic autonomy and shaped policy priorities.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Lack of long-term planning</h4>
+                                    <p class="text-small">Didn't leave strong institutional frameworks due to reforms being personality-based/charismatic— often aimed to appeal to public sentiments that lacked long-term planning for immediate crises.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Uneven rural developments</h4>
+                                    <p class="text-small">Remote provinces remained overlooked in the creation of roads, irrigation, and schools.</p>
+                                </div>
+                                <div class="legacy-item">
+                                    <h4 class="legacy-item-title">Limited industrialization efforts</h4>
+                                    <p class="text-small">Focus on agrarian efforts overshadowed industry expansion or economic diversification.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" style="padding: 3rem 0;">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center; justify-content: center; margin-bottom: 2rem;"><span class="icon-building"></span> PROGRAMS AND PROJECTS</h2>
+                
+                <!-- Scope -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="subsection-title">SCOPE</h2>
+                        <p class="text-content">Despite having a short-term presidency, Ramon Magsaysay left a legacy that is still remembered and felt today. The following are some of the programs and policies implemented during his term.</p>
+                    </div>
+                </div>
+
+                <!-- Social Programs -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-heart"></span> SOCIAL PROGRAMS AND PROJECT</h2>
+                        
+                        <div>
+                            <h3 class="subsection-title">Agricultural Tenancy Act of 1954 (RA 1199)</h3>
+                            <ul class="custom-list">
+                                <li>Republic Act 1199 established agricultural tenancy relations between landholders and tenants based on social justice.</li>
+                                <li>This established a legal framework for agricultural tenancy to create a fair and just relationship between the landholders and tenants.</li>
+                                <li>Under this, a contractual relationship between the tenant and the owner is made. A tenant-farmer (agricultural lessee) is granted the right to cultivate land in exchange for a share of the harvest (share tenancy) or for a fixed rental (leasehold tenancy).</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Establishment of NARRA (National Resettlement and Rehabilitation Administration)</h3>
+                            <ul class="custom-list">
+                                <li>Republic Act 1160 of 1954 created the National Resettlement and Rehabilitation Administration (NARRA) to accelerate land distribution to landless tenants and farm workers (Jurisprudence Philippines, n.d.).</li>
+                                <li>It provided loans, transportation, and support to settlers while prohibiting officials from having financial interests.</li>
+                                <li>The program also encouraged migration to sparsely populated areas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Land Reform Act of 1955 (RA 1400)</h3>
+                            <ul class="custom-list">
+                                <li>Republic Act 1400 of 1955 established the Land Tenure Administration (LTA) to acquire and redistribute tenanted rice and corn lands (LawPhil Project, 1955).</li>
+                                <li>It aimed to address landlessness among Filipino citizens.</li>
+                                <li>With the redistribution of the land to landless citizens, the Act promoted social justice, reduced poverty in rural areas, and enhanced agricultural productivity.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Creation of the Land Tenure Administration (LTA)</h3>
+                            <ul class="custom-list">
+                                <li>The Act established the Land Tenure Administration, which was directly under the control and supervision of the President of the Philippines.</li>
+                                <li>It was tasked to acquire and distribute agricultural lands to landless citizens.</li>
+                                <li>Aims investigate the areas with land tenure difficulties and recommend appropriate actions (LawPhil Project, 1955).</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Barrio Health and Social Welfare Program</h3>
+                            <ul class="custom-list">
+                                <li>This program expanded rural health services, irrigation canal maintenance, and artesian well upkeep (Danguilan, 1999).</li>
+                                <li>To strengthen the delivery of medical services, the RA 1082 reorganized health positions.</li>
+                                <li>The program promoted cooperation between the government agencies and community organizations.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Presidential Assistant for Community Development (PACD)</h3>
+                            <p class="text-content">To ensure rural development through infrastructure, health, and education programs, the PACD was created.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultural Programs -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="subsection-title">CULTURAL PROGRAMS AND PROJECTS</h2>
+                        
+                        <div>
+                            <h3 class="subsection-title">Community Development Program</h3>
+                            <ul class="custom-list">
+                                <li>Ramon Magsaysay created the Presidential Assistant on Community Development (PACD) to implement the Philippine Community Development Program that would coordinate and integrate on a national scale the efforts of various governmental and civic agencies to improve the living conditions of barrio residents nationwide (Department of the Interior and Local Government, n.d.).</li>
+                                <li>This promoted barrio residents' self-reliance and participation in community planning.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Economic Programs -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-dollar"></span> ECONOMIC PROGRAMS AND PROJECT</h2>
+                        
+                        <div>
+                            <h3 class="subsection-title">Agricultural Credits, and Cooperative Financing Administration (ACCFA)</h3>
+                            <ul class="custom-list">
+                                <li>Agricultural Credit and Cooperative Financing Administration was a former Philippine government agency established under Republic Act No. 821.</li>
+                                <li>Aimed to provide credit to farmers and promote cooperatives.</li>
+                                <li>It was later reorganized into the Agricultural Credit Administration under the Land Reform Code.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Price Stabilization Corporation (PRISCO)</h3>
+                            <ul class="custom-list">
+                                <li>PRISCO was established to regulate the prices of commodities such as rice and ensure market stability.</li>
+                                <li>Applies specifically to the price regulation of certain rice varieties to address concerns about market stability.</li>
+                                <li>It amended price ceilings to protect consumers during shortages.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Encouragement of Foreign Aid and Investments</h3>
+                            <ul class="custom-list">
+                                <li>Fostered positive foreign relations and encouraged a sense of national identity through initiatives such as the creation of the Southeast Asia Treaty Organization (SEATO).</li>
+                                <li>Actively welcomed foreign capital and investment.</li>
+                                <li>The government limited its role to areas vital for public welfare.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Retail Trade Nationalization Act (RA 1180)</h3>
+                            <ul class="custom-list">
+                                <li>Known as the 1954 Retail Trade Nationalization Law, RA 1180 took effect during the administration of President Ramon Magsaysay. The first sentence says it all: "No person who is not a citizen of the Philippines, and no association, partnership, or corporation the capital of which is not wholly owned by citizens of the Philippines, shall engage directly or indirectly in the retail business (Inquirer.net, 2018)."</li>
+                                <li>Restricts retail business operations in the Philippines to citizens and entities wholly owned by citizens.</li>
+                                <li>The law strengthened Filipino economic independence and control over commerce.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Political Programs -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-shield"></span> POLITICAL PROGRAMS AND PROJECTS</h2>
+                        
+                        <div>
+                            <h3 class="subsection-title">Clean Government Program</h3>
+                            <ul class="custom-list">
+                                <li>Former President Magsaysay's administration focused on eradicating corruption within the government.</li>
+                                <li>His administration was ranked the second cleanest in Asia in terms of corruption.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Peace and Order Against Hubalahap</h3>
+                            <ul class="custom-list">
+                                <li>Magsaysay persuaded people who joined the anti-government Huk (originally Hukbalahap, or Hukbo ng Bayan Laban sa Hapon) to surrender (Bolido, 2023).</li>
+                                <li>He transformed the Armed Forces into a disciplined partner in development (Severo, 2016).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infrastructure Programs -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-wrench"></span> INFRASTRUCTURE, AND DEVELOPMENT PROGRAMS</h2>
+                        
+                        <div>
+                            <h3 class="subsection-title">Ambuklao Powerplant Construction</h3>
+                            <ul class="custom-list">
+                                <li>First large hydroelectric facility in Southeast Asia.</li>
+                                <li>The construction of Ambuklao Powerplant supported industrialization by supplying electricity to Metro Manila and Northern Luzon.</li>
+                                <li>The project symbolized Magsaysay's vision of modern infrastructure as a driver of national progress (Philstar, 2011).</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">Artesian Well Constructions</h3>
+                            <ul class="custom-list">
+                                <li>To provide potable water in rural areas, Magsaysay initiated the construction of Artesian Wells.</li>
+                                <li>This program reduced waterborne diseases and improved sanitation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">School Building Programs (Barrio High Schools)</h3>
+                            <ul class="custom-list">
+                                <li>Between 1953 and 1956, the number of public schools increased from 23,600 to 26,370.</li>
+                                <li>The number of teachers increased from 91,665 to 104,250 in the same period, highlighting expansion in both staff and infrastructure (Inquirer, 2015).</li>
+                            </ul>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div>
+                            <h3 class="subsection-title">People's Homesite and Housing Corporation Support</h3>
+                            <ul class="custom-list">
+                                <li>Executive Order No. 148, signed by Magsaysay, prompted the creation of a National Housing Council to advise on policies toward low-cost housing, slum clearance, and family-owned homes.</li>
+                                <li>It promoted family-owned homes and developed housing policies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluation -->
+        <section id="evaluation" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-chart"></span> EVALUATION</h2>
+                        
+                        <h3 style="text-align: center; color: #92400e; font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;">EVALUATION OF MAGSAYSAY'S PRESIDENCY</h3>
+                        
+                        <!-- Evaluation Table -->
+                        <table class="eval-table">
+                            <thead>
+                                <tr>
+                                    <th>CATEGORY</th>
+                                    <th>1<br/>Very Poor</th>
+                                    <th>2<br/>Poor</th>
+                                    <th>3<br/>Fair</th>
+                                    <th>4<br/>Good</th>
+                                    <th>5<br/>Excellent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Social Programs</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><span class="checkmark">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Cultural Programs</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><span class="checkmark">✓</span></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Economic Programs</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><span class="checkmark">✓</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Political Programs</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><span class="checkmark">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Infrastructure and Development Programs</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><span class="checkmark">✓</span></td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td>TOTAL: 4.4 (Good)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Evaluation Analysis -->
+                        <div style="margin-top: 2rem;">
+                            <p class="text-content">Ramon Magsaysay's presidency is remembered by the nation as the "President of the Masses." His leadership left a remarkable improvement in different areas such as social welfare, infrastructure, and governance. However, his presidency was not without shortcomings.</p>
+                            
+                            <p class="text-content">One of the key contributions of Magsaysay was his effort to address land and social inequality. This was done through his implementations of the Agricultural Tenancy Act of 1954, the Land Reform Act of 1955, and the creation of NARRA. These programs promoted fairness to tenant farmers and accelerated land distribution to landless tenants. Further, he also pushed not just for urban development, but for rural areas as well through the Barrio Health Program. However, despite exhaustive efforts, these did not reach all farmers in rural communities. As for the community development, it was considered modest compared to the efforts given to social and political aspects.</p>
+                            
+                            <p class="text-content">On his economic programs, the implemented ACCFA, despite its benefits, also became an avenue for enabling landlords, merchant-usurers, bureaucrats, and rich peasants to control fake cooperatives and overpower the poor and middle peasants (Storm, n.d.). Moreover, membership in SEATO was said to be a way to allow the US imperialism to bring its allies. The mentioned notions are the shortcomings of the then-President Magsaysay's term.</p>
+                            
+                            <p class="text-content">To continue, Magsaysay's clean government campaign also gained admiration from the public. His administration was considered one of the least corrupt in Asia. His efforts to restore peace and order were seen in the weakening of Hukbalahap, resulting in restored stability as well.</p>
+                            
+                            <p class="text-content">In accordance with the mentioned successes and limitations in his leadership, his regime can be evaluated as 4 out of 5. This reflects the effectiveness made during his term in uplifting the different aspects of the nation, while also addressing the issues that drew criticism. Overall, Ramon Magsaysay's administration, despite its brief time, remains remarkable for its strong emphasis on bringing government closer to the people.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-trend"></span> RECOMMENDATION</h2>
+                        
+                        <p class="text-content">Ramon Magsaysay, despite his celebrated accomplishments, had certain weaknesses that limited the long-term effect of his policies:</p>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <div class="recommendation-item">
+                                <p class="text-content">Ensure continuity among reforms through establishing a permanent mechanism to handle citizen feedback and complaints, going beyond personal drive.</p>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <p class="text-content">To strengthen the Land reform implementation, monitoring bodies should be available to oversee the program implementations. Moreover, legal assistance and protection should be provided to tenant farmers. Lastly, ensure marginalized rural communities are reached through systematic phases in implementation.</p>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <p class="text-content">Include economic development, such as industrialization and employment programs to reduce dependency on agriculture, create job opportunities in urban centers, and promote vocational training programs.</p>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <p class="text-content">Develop industries and infrastructure that are domestic and local to reduce foreign reliance. Balanced trade policies should be sought after with other Asian nations for a diversified economic partnership.</p>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <p class="text-content">Expand rural development to provinces, such as infrastructure projects, while prioritizing resource allocation for proper distribution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section id="references" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h2 class="section-title"><span class="icon-globe"></span> REFERENCES</h2>
+                        
+                        <div>
+                            <div class="reference-item">
+                                <p class="reference-text">Bolido, L. B. (2023, March 26). 66 years after death, Ramon Magsaysay still a yardstick of presidency. Philippine Daily Inquirer. <a href="https://newsinfo.inquirer.net/1748198/66-years-after-death-ramon-magsaysay-still-a-yardstick-of-presidency" target="_blank" class="reference-link">https://newsinfo.inquirer.net/1748198/66-years-after-death-ramon-magsaysay-still-a-yardstick-of-presidency</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Britannica Editors. (2025, September 1). Ramon Magsaysay | Philippine President. Encyclopedia Britannica. <a href="https://www.britannica.com/biography/Ramon-Magsaysay" target="_blank" class="reference-link">https://www.britannica.com/biography/Ramon-Magsaysay</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Danguilan, M. J. (1999). Bullets and Bandages: Public Health as a Tool of Engagement in the Philippines (Research Paper No. 161). Takemi Program in International Health, Harvard School of Public Health. Retrieved from <a href="https://content.sph.harvard.edu/wwwhsph/sites/114/2012/10/rp161.pdf" target="_blank" class="reference-link">https://content.sph.harvard.edu/wwwhsph/sites/114/2012/10/rp161.pdf</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Department of the Interior and Local Government. (n.d.). Who we are. Local Governance Performance Management System. Retrieved September 26, 2025, from <a href="https://lgpms.dilg.gov.ph/site/who-we-are" target="_blank" class="reference-link">https://lgpms.dilg.gov.ph/site/who-we-are</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">History Rise. (2025, August 22). Ramon Magsaysay: Champion of the Common Man – His Legacy Unveiled. History Rise. Retrieved September 30, 2025, from <a href="https://historyrise.com/ramon-magsaysay-champion-of-the-common-man/" target="_blank" class="reference-link">https://historyrise.com/ramon-magsaysay-champion-of-the-common-man/</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Inquirer. (2015, March 4). Magsaysay the education guy. Inquirer.net. <a href="https://newsinfo.inquirer.net/679235/magsaysay-the-education-guy" target="_blank" class="reference-link">https://newsinfo.inquirer.net/679235/magsaysay-the-education-guy</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Inquirer.net. (2018, October 19). Know the law. Inquirer Business. <a href="https://business.inquirer.net/259160/know-the-law" target="_blank" class="reference-link">https://business.inquirer.net/259160/know-the-law</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Jurisprudence Philippines. (n.d.). Free distribution of agricultural lands of public domain. <a href="https://jur.ph/law/summary/free-distribution-of-agricultural-lands-of-public-domain" target="_blank" class="reference-link">https://jur.ph/law/summary/free-distribution-of-agricultural-lands-of-public-domain</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">LawPhil Project. (1955). Republic Act No. 1400: Land Reform Act of 1955. Retrieved September 25, 2025, from <a href="https://lawphil.net/statutes/repacts/ra1955/ra_1400_1955.html" target="_blank" class="reference-link">https://lawphil.net/statutes/repacts/ra1955/ra_1400_1955.html</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Philstar. (2011, July 7). The rebirth of the Ambuklao hydro plant. The Philippine Star. <a href="https://www.philstar.com/business/science-and-environment/2011/07/07/703064/rebirth-ambuklao-hydro-plant" target="_blank" class="reference-link">https://www.philstar.com/business/science-and-environment/2011/07/07/703064/rebirth-ambuklao-hydro-plant</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Sinaunang Panahon. (2025, March 28). The Magsaysay Era: The Golden Age of Philippine Democracy (1953-1957). Sinaunangpanahon. Retrieved September 30, 2025, from <a href="https://sinaunangpanahon.com/the-magsaysay-era-the-golden-age-of-philippine-democracy-1953-1957/" target="_blank" class="reference-link">https://sinaunangpanahon.com/the-magsaysay-era-the-golden-age-of-philippine-democracy-1953-1957/</a></p>
+                            </div>
+
+                            <div class="reference-item">
+                                <p class="reference-text">Storm, F. Q. (n.d.). Philippine Society and Revolution. <a href="https://www.marxists.org/history/philippines/cpp/guerrero/1970/psr.htm" target="_blank" class="reference-link">https://www.marxists.org/history/philippines/cpp/guerrero/1970/psr.htm</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Student Information -->
+                        <div class="student-info">
+                            <p class="student-title">Prepared by:</p>
+                            <p class="student-names">Quilop, Naguit, Ollero</p>
+                            <p class="student-class">II-C Psychology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <script>
+        // Back to top functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Navigation smooth scrolling
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
