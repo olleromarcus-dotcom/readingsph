@@ -44,7 +44,8 @@ const CompleteMagsaysayAssessment = () => {
     { id: 'legacy', label: 'Legacy', icon: Award },
     { id: 'programs', label: 'Programs', icon: Building },
     { id: 'evaluation', label: 'Evaluation', icon: BarChart3 },
-    { id: 'recommendations', label: 'Recommendations', icon: TrendingUp }
+    { id: 'recommendations', label: 'Recommendations', icon: TrendingUp },
+    { id: 'references', label: 'References', icon: Globe }
   ];
 
   return (
