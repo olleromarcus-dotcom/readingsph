@@ -301,6 +301,9 @@ const CompleteMagsaysayAssessment = () => {
 
         {/* Evaluation and Recommendations */}
         <MagsaysayEvaluation />
+
+        {/* References Section */}
+        <MagsaysayReferences />
       </div>
 
       {/* Back to Top Button */}
